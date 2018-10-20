@@ -1,7 +1,7 @@
 import random
 
 
-class colour:
+class Colour:
     # colour Variables
 
     # Transparent
