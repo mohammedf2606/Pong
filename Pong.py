@@ -14,7 +14,7 @@ BLACK = (0, 0, 0)
 # globals
 WIDTH = 600
 HEIGHT = 400
-BALL_RADIUS = 10
+ballRadius = 2
 PAD_WIDTH = 8
 PAD_HEIGHT = 80
 HALF_PAD_WIDTH = PAD_WIDTH // 2
@@ -89,7 +89,7 @@ def draw(canvas):
     ball_pos[1] += int(ball_vel[1])
 
     # draw paddles and ball
-    pygame.draw.circle(canvas, RED, ball_pos, 20, 0)
+    pygame.draw.circle(canvas, RED, ball_pos, ballRadius, 0)
     pygame.draw.polygon(canvas, GREEN, [[paddle1_pos[0] - HALF_PAD_WIDTH, paddle1_pos[1] - HALF_PAD_HEIGHT],
                                         [paddle1_pos[0] - HALF_PAD_WIDTH, paddle1_pos[1] + HALF_PAD_HEIGHT],
                                         [paddle1_pos[0] + HALF_PAD_WIDTH, paddle1_pos[1] + HALF_PAD_HEIGHT],
@@ -100,27 +100,27 @@ def draw(canvas):
                                         [paddle2_pos[0] + HALF_PAD_WIDTH, paddle2_pos[1] - HALF_PAD_HEIGHT]], 0)
 
     # ball collision check on top and bottom walls
-    if int(ball_pos[1]) <= BALL_RADIUS:
+    if int(ball_pos[1]) <= ballRadius:
         ball_vel[1] = - ball_vel[1]
-    if int(ball_pos[1]) >= HEIGHT + 1 - BALL_RADIUS:
+    if int(ball_pos[1]) >= HEIGHT + 1 - ballRadius:
         ball_vel[1] = -ball_vel[1]
 
     # ball collison check on gutters or paddles
-    if int(ball_pos[0]) <= BALL_RADIUS + PAD_WIDTH and int(ball_pos[1]) in range(paddle1_pos[1] - HALF_PAD_HEIGHT,
+    if int(ball_pos[0]) <= ballRadius + PAD_WIDTH and int(ball_pos[1]) in range(paddle1_pos[1] - HALF_PAD_HEIGHT,
                                                                                  paddle1_pos[1] + HALF_PAD_HEIGHT, 1):
         ball_vel[0] = -ball_vel[0]
         ball_vel[0] *= 1.1
         ball_vel[1] *= 1.1
-    elif int(ball_pos[0]) <= BALL_RADIUS + PAD_WIDTH:
+    elif int(ball_pos[0]) <= ballRadius + PAD_WIDTH:
         r_score += 1
         ball_init(True)
 
-    if int(ball_pos[0]) >= WIDTH + 1 - BALL_RADIUS - PAD_WIDTH and int(ball_pos[1]) in range(
+    if int(ball_pos[0]) >= WIDTH + 1 - ballRadius - PAD_WIDTH and int(ball_pos[1]) in range(
             paddle2_pos[1] - HALF_PAD_HEIGHT, paddle2_pos[1] + HALF_PAD_HEIGHT, 1):
         ball_vel[0] = -ball_vel[0]
         ball_vel[0] *= 1.1
         ball_vel[1] *= 1.1
-    elif int(ball_pos[0]) >= WIDTH + 1 - BALL_RADIUS - PAD_WIDTH:
+    elif int(ball_pos[0]) >= WIDTH + 1 - ballRadius - PAD_WIDTH:
         l_score += 1
         ball_init(False)
 
