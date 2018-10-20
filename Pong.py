@@ -14,7 +14,7 @@ BLACK = (0, 0, 0)
 # globals
 WIDTH = 600
 HEIGHT = 400
-ballRadius = 2
+ballRadius = 10
 PAD_WIDTH = 8
 PAD_HEIGHT = 80
 HALF_PAD_WIDTH = PAD_WIDTH // 2
