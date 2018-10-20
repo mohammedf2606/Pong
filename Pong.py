@@ -14,7 +14,7 @@ BLACK = (0, 0, 0)
 # globals
 WIDTH = 600
 HEIGHT = 400
-BALL_RADIUS = 20
+BALL_RADIUS = 10
 PAD_WIDTH = 8
 PAD_HEIGHT = 80
 HALF_PAD_WIDTH = PAD_WIDTH // 2
@@ -28,7 +28,7 @@ r_score = 0
 
 # canvas declaration
 window = pygame.display.set_mode((WIDTH, HEIGHT), 0, 32)
-pygame.display.set_caption('Hello World')
+pygame.display.set_caption('Pong')
 
 
 # helper function that spawns a ball, returns a position vector and a velocity vector
