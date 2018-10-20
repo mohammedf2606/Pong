@@ -1,15 +1,10 @@
 import random
 import pygame, sys
 from pygame.locals import *
+from Color import *
 
 pygame.init()
 fps = pygame.time.Clock()
-
-# colors
-WHITE = (255, 255, 255)
-RED = (255, 0, 0)
-GREEN = (0, 255, 0)
-BLACK = (0, 0, 0)
 
 # globals
 WIDTH = 600
@@ -63,11 +58,11 @@ def init():
 def draw(canvas):
     global paddle1_pos, paddle2_pos, ball_pos, ball_vel, l_score, r_score
 
-    canvas.fill(BLACK)
-    pygame.draw.line(canvas, WHITE, [WIDTH // 2, 0], [WIDTH // 2, HEIGHT], 1)
-    pygame.draw.line(canvas, WHITE, [PAD_WIDTH, 0], [PAD_WIDTH, HEIGHT], 1)
-    pygame.draw.line(canvas, WHITE, [WIDTH - PAD_WIDTH, 0], [WIDTH - PAD_WIDTH, HEIGHT], 1)
-    pygame.draw.circle(canvas, WHITE, [WIDTH // 2, HEIGHT // 2], 70, 1)
+    canvas.fill(Color.Gray)
+    pygame.draw.line(canvas, Color.White, [WIDTH // 2, 0], [WIDTH // 2, HEIGHT], 1)
+    pygame.draw.line(canvas, Color.White, [PAD_WIDTH, 0], [PAD_WIDTH, HEIGHT], 1)
+    pygame.draw.line(canvas, Color.White, [WIDTH - PAD_WIDTH, 0], [WIDTH - PAD_WIDTH, HEIGHT], 1)
+    pygame.draw.circle(canvas, Color.White, [WIDTH // 2, HEIGHT // 2], 70, 1)
 
     # update paddle's vertical position, keep paddle on the screen
     if paddle1_pos[1] > HALF_PAD_HEIGHT and paddle1_pos[1] < HEIGHT - HALF_PAD_HEIGHT:
@@ -89,12 +84,12 @@ def draw(canvas):
     ball_pos[1] += int(ball_vel[1])
 
     # draw paddles and ball
-    pygame.draw.circle(canvas, RED, ball_pos, ballRadius, 0)
-    pygame.draw.polygon(canvas, GREEN, [[paddle1_pos[0] - HALF_PAD_WIDTH, paddle1_pos[1] - HALF_PAD_HEIGHT],
+    pygame.draw.circle(canvas, Color.White, ball_pos, ballRadius, 0)
+    pygame.draw.polygon(canvas, Color.White , [[paddle1_pos[0] - HALF_PAD_WIDTH, paddle1_pos[1] - HALF_PAD_HEIGHT],
                                         [paddle1_pos[0] - HALF_PAD_WIDTH, paddle1_pos[1] + HALF_PAD_HEIGHT],
                                         [paddle1_pos[0] + HALF_PAD_WIDTH, paddle1_pos[1] + HALF_PAD_HEIGHT],
                                         [paddle1_pos[0] + HALF_PAD_WIDTH, paddle1_pos[1] - HALF_PAD_HEIGHT]], 0)
-    pygame.draw.polygon(canvas, GREEN, [[paddle2_pos[0] - HALF_PAD_WIDTH, paddle2_pos[1] - HALF_PAD_HEIGHT],
+    pygame.draw.polygon(canvas, Color.White, [[paddle2_pos[0] - HALF_PAD_WIDTH, paddle2_pos[1] - HALF_PAD_HEIGHT],
                                         [paddle2_pos[0] - HALF_PAD_WIDTH, paddle2_pos[1] + HALF_PAD_HEIGHT],
                                         [paddle2_pos[0] + HALF_PAD_WIDTH, paddle2_pos[1] + HALF_PAD_HEIGHT],
                                         [paddle2_pos[0] + HALF_PAD_WIDTH, paddle2_pos[1] - HALF_PAD_HEIGHT]], 0)
