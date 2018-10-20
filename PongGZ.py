@@ -3,13 +3,13 @@ import time
 from Colour import *
 
 background_Colour = Colour.Gray
-width = 600
-height = 400
+width = 1920
+height = 1080
 buttonWidth = 200
 buttonHeight = 75
 pygame.font.init()
 
-screen = pygame.display.set_mode((width, height), 0)
+screen = pygame.display.set_mode((width, height), pygame.FULLSCREEN)
 pygame.display.set_caption('Pong')
 screen.fill(background_Colour)
 
