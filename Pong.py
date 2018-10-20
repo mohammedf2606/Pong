@@ -104,8 +104,6 @@ def draw(canvas):
     if int(ball_pos[0]) <= ballRadius + PAD_WIDTH and int(ball_pos[1]) in range(paddle1_pos[1] - HALF_PAD_HEIGHT,
                                                                                  paddle1_pos[1] + HALF_PAD_HEIGHT, 1):
         ball_vel[0] = -ball_vel[0]
-        ball_vel[0] *= 1.1
-        ball_vel[1] *= 1.1
     elif int(ball_pos[0]) <= ballRadius + PAD_WIDTH:
         r_score += 1
         ball_init(True)
@@ -113,8 +111,6 @@ def draw(canvas):
     if int(ball_pos[0]) >= WIDTH + 1 - ballRadius - PAD_WIDTH and int(ball_pos[1]) in range(
             paddle2_pos[1] - HALF_PAD_HEIGHT, paddle2_pos[1] + HALF_PAD_HEIGHT, 1):
         ball_vel[0] = -ball_vel[0]
-        ball_vel[0] *= 1.1
-        ball_vel[1] *= 1.1
     elif int(ball_pos[0]) >= WIDTH + 1 - ballRadius - PAD_WIDTH:
         l_score += 1
         ball_init(False)
