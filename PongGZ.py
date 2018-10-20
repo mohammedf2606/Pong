@@ -185,4 +185,7 @@ while running:
                 text = floatText(displayText, Colour.Gold, 56)
                 screen.blit(text, ((width // 2) - text.get_width() // 2, (height // 2) - (text.get_height() // 2)))
 
+                text = floatText("Press SPACE to Restart", Colour.Black, 24)
+                screen.blit(text, ((width // 2) - text.get_width() // 2, (height // 3) - (text.get_height() // 1.5)))
+
                 pygame.display.update()
