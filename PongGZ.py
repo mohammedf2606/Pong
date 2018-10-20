@@ -9,7 +9,7 @@ buttonWidth = 200
 buttonHeight = 75
 pygame.font.init()
 
-screen = pygame.display.set_mode((width, height))
+screen = pygame.display.set_mode((width, height), 0)
 pygame.display.set_caption('Pong')
 screen.fill(background_Colour)
 
@@ -122,6 +122,9 @@ while running:
                     if event.key == pygame.K_SPACE:
                         gameScreen = False
                         pauseScreen = True
+                    if event.key == pygame.K_1:
+                        gameScreen = False
+                        endScreen = True
 
                 if l_score == limit or r_score == 5:
                     gameScreen = False
@@ -169,7 +172,7 @@ while running:
                         menuScreen = True
                         endScreen = False
 
-                screen.fill(Colour.Gainsboro)
+                screen.fill(Colour.Mist)
 
                 # Display "Player 1 Win"
                 if PvP and l_score == limit:
@@ -182,10 +185,10 @@ while running:
                     displayText = "CPU Wins"
 
 
-                text = floatText(displayText, Colour.Gold, 56)
-                screen.blit(text, ((width // 2) - text.get_width() // 2, (height // 2) - (text.get_height() // 2)))
+                text1 = floatText(displayText, Colour.Gold, 72)
+                screen.blit(text1, ((width // 2) - text1.get_width() // 2, (height // 2) - (text1.get_height() // 2)))
 
-                text = floatText("Press SPACE to Restart", Colour.Black, 24)
-                screen.blit(text, ((width // 2) - text.get_width() // 2, (height // 3) - (text.get_height() // 1.5)))
+                text2 = floatText("Press SPACE to Restart", Colour.Black, 24)
+                screen.blit(text2, ((width // 2) - text2.get_width() // 2, (height // 3) + (text1.get_height() // 1) + (text2.get_height() // 0.75)))
 
                 pygame.display.update()
