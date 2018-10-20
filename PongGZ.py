@@ -2,7 +2,7 @@ import pygame
 import time
 from Colour import *
 
-background_colour = colour.Gray
+background_Colour = Colour.Gray
 width = 600
 height = 400
 buttonWidth = 200
@@ -11,16 +11,16 @@ pygame.font.init()
 
 screen = pygame.display.set_mode((width, height))
 pygame.display.set_caption('Pong')
-screen.fill(background_colour)
+screen.fill(background_Colour)
 
 pixelFont = pygame.font.SysFont("Minecraft", 144)
 font = pygame.font.Font(None, 144)
 
-text = pixelFont.render("Pong", True, colour.DarkOliveGreen)
-start = pixelFont.render("Pong", True, colour.DarkOliveGreen)
+text = pixelFont.render("Pong", True, Colour.DarkOliveGreen)
+start = pixelFont.render("Pong", True, Colour.DarkOliveGreen)
 
 def text_objects(text, font):
-    textSurface = font.render(text, True, colour.Black)
+    textSurface = font.render(text, True, Colour.Black)
     return textSurface, textSurface.get_rect()
 
 def button(msg,x,y,w,h,ic,ac):
@@ -36,9 +36,9 @@ def button(msg,x,y,w,h,ic,ac):
     textRect.center = ( (x+(w/2)), (y+(h/2)) )
     screen.blit(textSurf, textRect)
 
-def floatText(text, colour, font):
+def floatText(text, Colour, font):
     pixelFont = pygame.font.SysFont("Minecraft", font)
-    printText = pixelFont.render(text, True, colour)
+    printText = pixelFont.render(text, True, Colour)
     return printText
 
 running = True
@@ -52,7 +52,7 @@ while running:
         if event.type == pygame.QUIT:
             startScreen = False
 
-        screen.fill(background_colour)
+        screen.fill(background_Colour)
 
         while startScreen:
             for event in pygame.event.get():
@@ -60,18 +60,18 @@ while running:
                     startScreen = False
                     running = False
 
-                pygame.draw.rect(screen, colour.Gray, (width, height, 0, 0))
-                text = floatText("Pong", colour.DarkOliveGreen, 144)
+                pygame.draw.rect(screen, Colour.Gray, (width, height, 0, 0))
+                text = floatText("Pong", Colour.DarkOliveGreen, 144)
                 screen.blit(text, ((width // 2) - text.get_width() // 2, (height // 4) - text.get_height() // 2))
 
                 mouse = pygame.mouse.get_pos()
                 click = pygame.mouse.get_pressed()
 
-                pvetext = floatText("PvE", colour.Gray, 72)
-                pvptext = floatText("PvP", colour.Gray, 72)
+                pvetext = floatText("PvE", Colour.Gray, 72)
+                pvptext = floatText("PvP", Colour.Gray, 72)
 
                 if (width // 2) - (buttonWidth // 2) < mouse[0] < (width // 2) + (buttonWidth // 2) and (height - (2.65 * buttonHeight)) < mouse[1] < (height - (1.65 * buttonHeight)):
-                    pygame.draw.rect(screen, colour.Red, (
+                    pygame.draw.rect(screen, Colour.Red, (
                         (width // 2) - (buttonWidth // 2), (height - (2.75 * buttonHeight)), buttonWidth, buttonHeight))
                     screen.blit(pvetext, ((width // 2) - (pvetext.get_width() // 2), (height - (2.65 * buttonHeight))))
 
@@ -80,13 +80,13 @@ while running:
                         gameScreen = True
 
                 else:
-                    pygame.draw.rect(screen, colour.DarkRed, (
+                    pygame.draw.rect(screen, Colour.DarkRed, (
                         (width // 2) - (buttonWidth // 2), (height - (2.75 * buttonHeight)), buttonWidth, buttonHeight))
-                    text = floatText("PvE", colour.Gray, 72)
+                    text = floatText("PvE", Colour.Gray, 72)
                     screen.blit(pvetext, ((width // 2) - (pvetext.get_width() // 2), (height - (2.65 * buttonHeight))))
 
                 if (width // 2) - (buttonWidth // 2) < mouse[0] < (width // 2) + (buttonWidth // 2) and (height - (1.4 * buttonHeight)) < mouse[1] < (height - (0.4 * buttonHeight)):
-                    pygame.draw.rect(screen, colour.Red, (
+                    pygame.draw.rect(screen, Colour.Red, (
                         (width // 2) - (buttonWidth // 2), (height - (1.5 * buttonHeight)), buttonWidth, buttonHeight))
                     screen.blit(pvptext, ((width // 2) - (pvptext.get_width() // 2), (height - (1.4 * buttonHeight))))
 
@@ -95,9 +95,9 @@ while running:
                         gameScreen = True
 
                 else:
-                    pygame.draw.rect(screen, colour.DarkRed, (
+                    pygame.draw.rect(screen, Colour.DarkRed, (
                         (width // 2) - (buttonWidth // 2), (height - (1.5 * buttonHeight)), buttonWidth, buttonHeight))
-                    text = floatText("PvP", colour.Gray, 72)
+                    text = floatText("PvP", Colour.Gray, 72)
                     screen.blit(pvptext, ((width // 2) - (pvptext.get_width() // 2), (height - (1.4 * buttonHeight))))
 
                 pygame.display.update()
@@ -110,7 +110,7 @@ while running:
 
                 if event.type == pygame.KEYDOWN
 
-                screen.fill(background_colour)
+                screen.fill(background_Colour)
 
                 pygame.display.update()
 
@@ -119,4 +119,4 @@ while running:
                 if event.type == pygame.QUIT:
                     pauseScreen = False
                     running = False
-                screen.fill(background_colour)
+                screen.fill(background_Colour)
