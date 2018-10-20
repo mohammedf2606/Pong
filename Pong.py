@@ -1,7 +1,7 @@
 import random
 import pygame, sys
 from pygame.locals import *
-from Color import *
+from Colour import *
 
 pygame.init()
 fps = pygame.time.Clock()
