@@ -1,5 +1,6 @@
 import pygame
 import sys
+import random
 from pygame.locals import *
 import time
 from Colour import *
@@ -93,7 +94,7 @@ def init():
 
 # draw function of canvas
 def draw(canvas):
-    global paddle1_pos, paddle2_pos, ball_pos, ball_vel, l_score, r_score
+    global paddle1_pos, paddle2_pos, ball_pos, ball_vel, l_score, r_score, paddle1_vel, paddle2_vel
 
     canvas.fill(Colour.Gray)
     pygame.draw.line(canvas, Colour.White, [width // 2, 0], [width // 2, height], 1)
@@ -101,18 +102,10 @@ def draw(canvas):
     pygame.draw.line(canvas, Colour.White, [width - PAD_width, 0], [width - PAD_width, height], 1)
 
     # update paddle's vertical position, keep paddle on the screen
-    if paddle1_pos[1] > HALF_PAD_height and paddle1_pos[1] < height - HALF_PAD_height:
-        paddle1_pos[1] += paddle1_vel
-    elif paddle1_pos[1] == HALF_PAD_height and paddle1_vel > 0:
-        paddle1_pos[1] += paddle1_vel
-    elif paddle1_pos[1] == height - HALF_PAD_height and paddle1_vel < 0:
+    if paddle1_pos[1] >= HALF_PAD_height - paddle1_vel and paddle1_pos[1] <= height - HALF_PAD_height - paddle1_vel:
         paddle1_pos[1] += paddle1_vel
 
-    if paddle2_pos[1] > HALF_PAD_height and paddle2_pos[1] < height - HALF_PAD_height:
-        paddle2_pos[1] += paddle2_vel
-    elif paddle2_pos[1] == HALF_PAD_height and paddle2_vel > 0:
-        paddle2_pos[1] += paddle2_vel
-    elif paddle2_pos[1] == height - HALF_PAD_height and paddle2_vel < 0:
+    if paddle2_pos[1] >= HALF_PAD_height - paddle2_vel and paddle2_pos[1] <= height - HALF_PAD_height - paddle2_vel:
         paddle2_pos[1] += paddle2_vel
 
     # update ball
@@ -278,7 +271,7 @@ while running:
                     if event.type == pygame.KEYDOWN:
                         keydown(event)
 
-                    if event.type == KEYUP:
+                    if event.type == pygame.KEYUP:
                         keyup(event)
 
                 if l_score == limit or r_score == limit:
