@@ -31,8 +31,8 @@ pygame.display.set_caption('Pong')
 def ball_init(right):
     global ball_pos, ball_vel  # these are vectors stored as lists
     ball_pos = [WIDTH // 2, HEIGHT // 2]
-    horz = random.randrange(2, 4)
-    vert = random.randrange(1, 3)
+    horz = 4
+    vert = random.choice([-3, 3])
 
     if right == False:
         horz = - horz
@@ -104,25 +104,35 @@ def draw(canvas):
     if int(ball_pos[0]) <= ballRadius + PAD_WIDTH and int(ball_pos[1]) in range(paddle1_pos[1] - HALF_PAD_HEIGHT,
                                                                                  paddle1_pos[1] + HALF_PAD_HEIGHT, 1):
         ball_vel[0] = -ball_vel[0]
-    elif int(ball_pos[0]) <= ballRadius + PAD_WIDTH:
+        ball_vel[0] *= 1.05
+        ball_vel[1] *= 1.05
+    elif int(ball_pos[0]) <= 0:
         r_score += 1
+        pygame.time.wait(1500)
         ball_init(True)
 
     if int(ball_pos[0]) >= WIDTH + 1 - ballRadius - PAD_WIDTH and int(ball_pos[1]) in range(
             paddle2_pos[1] - HALF_PAD_HEIGHT, paddle2_pos[1] + HALF_PAD_HEIGHT, 1):
         ball_vel[0] = -ball_vel[0]
-    elif int(ball_pos[0]) >= WIDTH + 1 - ballRadius - PAD_WIDTH:
+        ball_vel[0] *= 1.05
+        ball_vel[1] *= 1.05
+    elif int(ball_pos[0]) >= WIDTH:
         l_score += 1
+        pygame.time.wait(1500)
         ball_init(False)
 
     # update scores
-    myfont1 = pygame.font.SysFont("Comic Sans MS", 20)
-    label1 = myfont1.render("Score " + str(l_score), 1, (255, 255, 0))
-    canvas.blit(label1, (50, 20))
+    myfont1 = pygame.font.SysFont("Comic Sans MS", 36)
+    label1 = myfont1.render(str(l_score), True, (255, 255, 0))
+    label1_rect = label1.get_rect()
+    label1_rect.left = (WIDTH // 2) - 40
+    canvas.blit(label1, label1_rect)
 
-    myfont2 = pygame.font.SysFont("Comic Sans MS", 20)
-    label2 = myfont2.render("Score " + str(r_score), 1, (255, 255, 0))
-    canvas.blit(label2, (470, 20))
+    myfont2 = pygame.font.SysFont("Comic Sans MS", 36)
+    label2 = myfont2.render(str(r_score), True, (255, 255, 0))
+    label2_rect = label2.get_rect()
+    label2_rect.right = (WIDTH // 2) + 40
+    canvas.blit(label2, label2_rect)
 
 
 # keydown handler
