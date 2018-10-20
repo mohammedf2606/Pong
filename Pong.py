@@ -105,31 +105,31 @@ def draw(canvas):
                                                                                  paddle1_pos[1] + (HALF_PAD_HEIGHT+15), 1):
         ball_vel[0] = -ball_vel[0]
         ball_vel[0] *= 1.04
-        ball_vel[1] = 1.04*ball_vel[1] + paddle1_vel*0.2
+        ball_vel[1] = 1.04*ball_vel[1] + paddle1_vel*0.25
     elif int(ball_pos[0]) <= 0:
         r_score += 1
-        pygame.time.wait(1500)
+        pygame.time.wait(1200)
         ball_init(True)
 
     if int(ball_pos[0]) >= WIDTH + 1 - ballRadius - PAD_WIDTH and int(ball_pos[1]) in range(
             paddle2_pos[1] - (HALF_PAD_HEIGHT+15), paddle2_pos[1] + (HALF_PAD_HEIGHT+15), 1):
         ball_vel[0] = -ball_vel[0]
         ball_vel[0] *= 1.04
-        ball_vel[1] = 1.04*ball_vel[1] + paddle2_vel*0.2
+        ball_vel[1] = 1.04*ball_vel[1] + paddle2_vel*0.25
     elif int(ball_pos[0]) >= WIDTH:
         l_score += 1
-        pygame.time.wait(1500)
+        pygame.time.wait(1200)
         ball_init(False)
 
     # update scores
-    myfont1 = pygame.font.SysFont("Comic Sans MS", 36)
-    label1 = myfont1.render(str(l_score), True, (255, 255, 0))
+    myfont1 = pygame.font.SysFont("Minecraft", 36)
+    label1 = myfont1.render(str(l_score), True, Colour.White)
     label1_rect = label1.get_rect()
     label1_rect.left = (WIDTH // 2) - 50
     canvas.blit(label1, label1_rect)
 
-    myfont2 = pygame.font.SysFont("Comic Sans MS", 36)
-    label2 = myfont2.render(str(r_score), True, (255, 255, 0))
+    myfont2 = pygame.font.SysFont("Minecraft", 36)
+    label2 = myfont2.render(str(r_score), True, Colour.White)
     label2_rect = label2.get_rect()
     label2_rect.right = (WIDTH // 2) + 50
     canvas.blit(label2, label2_rect)
