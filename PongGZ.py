@@ -131,6 +131,15 @@ def draw(canvas):
                                         [paddle2_pos[0] + HALF_PAD_width, paddle2_pos[1] + HALF_PAD_height],
                                         [paddle2_pos[0] + HALF_PAD_width, paddle2_pos[1] - HALF_PAD_height]], 0)
 
+    if not PvP:
+        # AI Pong
+        time_to_edge = (width - ball_pos[0]) // ball_vel[0]
+        ai_target = ball_pos[1] + ball_vel[1] * time_to_edge
+        if paddle2_pos[1] > ai_target:
+            paddle2_vel = -6
+        elif paddle2_pos[1] < ai_target:
+            paddle2_vel = 6
+
     # ball collision check on top and bottom walls
     if int(ball_pos[1]) <= ballRadius:
         ball_vel[1] = - ball_vel[1]
@@ -261,7 +270,7 @@ while running:
 
             draw(screen)
 
-            if PvP:
+            if True:
                 for event in pygame.event.get():
                     if event.type == pygame.QUIT:
                         gameScreen = False
